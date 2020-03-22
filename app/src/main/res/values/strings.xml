@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">NavViewModel</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="fragment_home_button">进入</string>
+    <string name="fragment_detail_exit">返回</string>
+    <string name="fragment_detail_add"> + </string>
+    <string name="fragment_detail_less"> - </string>
+</resources>
