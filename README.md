@@ -38,6 +38,7 @@
 
     现在来说说然后在xml中添加DataBing。
     要使用DataBing需要现在build.gradle中(如图)添加
+
     ```gradle
     android {
     ...
@@ -51,6 +52,7 @@
     <img src="https://yi-sheep.github.io/NavViewModel/Res/image/NavViewModel_7.png">
 
     然后我们创建一个ViewModel的类，名为MyViewModel继承与ViewModel.
+
     ```java
     private MutableLiveData<Integer> number; // 创建一个 可变实时数据类型为Integer 的变量
 
@@ -79,7 +81,9 @@
     <img src="https://yi-sheep.github.io/NavViewModel/Res/image/NavViewModel_6.png">
 
     然后在data的子控件中添加variable标签用于声明变量，然后在对应的控件上写入对应的逻辑。
+
     home碎片布局文件
+
     ```xml
     <data>
         <variable
@@ -90,7 +94,9 @@
             ...
             android:text="@{String.valueOf(data.number)}"/> // 通过@{}能在xml中使用java代码实现调用函数等一系列操作
     ```
+
     detail碎片布局文件
+
     ```xml
     <data>
         <variable
@@ -110,7 +116,9 @@
     ```
 
     上面把databing添加了，ViewModel类也创建了，现在来修改碎片的类文件.
+
     HomeFragment.java
+
     ```java
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -151,7 +159,9 @@
         //        return inflater.inflate(R.layout.fragment_home, container, false);
     }
     ```
+
     DetailFragment.java
+
     ```java
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -176,6 +186,7 @@
     ```
 
     到这里算是全部完成了，可以运行看看，可能你发现了有一个bug，就是当进入详细碎片后对数据做了修改，然后我们不使用按钮返回主页碎片，而是使用系统返回键的时候就会出现，主页中的数据没有变化，是什么原因呢，其实就是系统的返回逻辑中，它会自动将进度条在碎片退出activity时的值恢复出来。这一机制导致会调用进度条的滑动事件，就会触发改变我们的数据让数据变成进度条的数值，所以我看上去数据没有发生变化，怎么处理呢也很简单，在进度条控件中添加一个属性。
+    
     ```xml
     <SeekBar
             ...
